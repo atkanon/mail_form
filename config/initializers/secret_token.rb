@@ -9,4 +9,9 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-MailForm::Application.config.secret_key_base = 'd7bcb8ef57141e3468e35c5e5a2b36ae00a32d2ac3edd3da9c13576fd463bf1f87b05d7f7228102692eb603eb3348c6aa2779e98e9879ac7c1c4074d373f18c0'
+
+# default
+# MailForm::Application.config.secret_key_base = 'd7bcb8ef57141e3468e35c5e5a2b36ae00a32d2ac3edd3da9c13576fd463bf1f87b05d7f7228102692eb603eb3348c6aa2779e98e9879ac7c1c4074d373f18c0'
+
+secret = Rails.env.production? ? ENV['SECRET_TOKEN'] : "top_secret_token"
+MailForm::Application.config.secret_key_base = secret
